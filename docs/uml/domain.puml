@@ -8,7 +8,7 @@ class 주문
 class 배송
 
 class 주문상품
-class 상품물품
+class "상품(물품)" as product
 class 도서
 class 음반
 class 영화
@@ -18,12 +18,12 @@ class 카테고리
 주문 "1" -- "1" 배송
 주문 "1" -- "*" 주문상품
 
-주문상품 "*" -- "1" 상품물품
-카테고리 "*" -- "*" 상품물품
+주문상품 "*" -- "1" product
+카테고리 "*" -- "*" product
 
-상품물품 <|-- 도서
-상품물품 <|-- 음반
-상품물품 <|-- 영화
+product <|-- 도서
+product <|-- 음반
+product <|-- 영화
 
 
 @enduml
