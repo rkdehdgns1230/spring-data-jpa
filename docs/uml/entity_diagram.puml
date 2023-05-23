@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title JPA SHOP domain diagram
+
+entity Member{
+    id: Long
+    name: String
+    address: Address
+    orders: List
+}
+entity Order{
+    id: Long
+    member: Member
+    orderItems: List
+    delivery: Delivery
+    orderDate: Date
+    status: OrderStatus
+}
+entity Delivery{
+    id: Long
+    order: Order
+    address: Address
+    status: DeliveryStatus
+}
+
+entity OrderItem{
+    id: Long
+    item: Item
+    order: Order
+    orderPrice
+    count
+}
+entity Item{
+    id: Long
+    name: String
+    price: int
+}
+entity Book{
+    author: String
+    isbn: String
+}
+entity Album{
+    artist: String
+    etc: String
+}
+entity Movie{
+    director: String
+    actor: String
+}
+entity Category{
+    id: Long
+    name: String
+    items: List
+    parent: Category
+    child: List
+}
+
+Order "1" -- "*" Member
+Order "1" -- "1" Delivery
+Order "1" -- "*" OrderItem
+
+OrderItem "*" -- "1" Item
+Category "*" -- "*" Item
+
+Item <|-- Book
+Item <|-- Album
+Item <|-- Movie
+
+@enduml
