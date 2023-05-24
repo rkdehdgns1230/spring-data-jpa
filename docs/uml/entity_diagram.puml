@@ -42,6 +42,7 @@ entity Book{
 }
 entity Album{
     artist: String
+
     etc: String
 }
 entity Movie{

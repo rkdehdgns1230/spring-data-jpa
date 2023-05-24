@@ -1,0 +1,68 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+enum MEMBER{
+    MEMBER_ID - PK
+    NAME
+    CITY
+    STREET
+    ZIPCODE
+}
+
+enum ORDERS {
+    ORDER_ID - PK
+    MEMBER_ID - FK
+    DELIVERY_ID - FK
+    ORDERDATE
+    STATUS
+}
+
+enum DELIVERY{
+    DELIVERY_ID - PK
+    STATUS
+    CITY
+    STREET
+    ZIPCODE
+}
+
+enum ORDER_ITEM{
+    ORDER_ITEM_ID - PK
+    ORDER_ID - FK
+    ITEM_ID - FK
+    ORDERPRICE
+    COUNT
+}
+
+enum ITEM {
+    ITEM_ID - PK
+    NAME
+    PRICE
+    STOCKQUANTITY
+    DTYPE
+    ARTIST
+    ETC
+    AUTHOR
+    ISBM
+    DIRECTOR
+    ACTOR
+}
+
+enum CATEGORY_ITEM{
+    CATEGORY_ID - PK, FK
+    ITEM_ID - PK, FK
+}
+
+enum CATEGORY{
+    CATEGORY_ID - PK
+    PARENT_ID - FK
+    NAME
+}
+
+MEMBER "1"---"n" ORDERS
+ORDERS "1"---"1" DELIVERY
+ORDERS "1" --- "n" ORDER_ITEM
+ORDER_ITEM "n" --- "1" ITEM
+ITEM "1" --- "n" CATEGORY_ITEM
+CATEGORY_ITEM "n" --- "1" CATEGORY
+
+@enduml
