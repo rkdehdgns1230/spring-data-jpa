@@ -32,7 +32,7 @@ public class MemberService {
 
     private void validateMember(Member member){
         List<Member> members = memberRepository.findByName(member.getName());
-        if(members.isEmpty()){
+        if(!members.isEmpty()){
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
