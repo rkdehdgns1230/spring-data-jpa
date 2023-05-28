@@ -12,6 +12,7 @@ public class Address {
     private String street;
     private String zipcode;
 
+    // JPA에서 제공하는 여러 기능을 활용하기 위해서는 기본 생성자 필요 (protected까지 허용)
     protected Address(){
     }
 
