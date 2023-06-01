@@ -39,7 +39,7 @@ public class OrderRepository {
 
     /**
      * JPA Criteria - 권장하지 않는 방식 (유지보수성이 너무 떨어지기 때문)
-     * @param orderSearch
+     * @param orderSearch: 정렬 기준 정보를 담고있다.
      * @return
      */
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
