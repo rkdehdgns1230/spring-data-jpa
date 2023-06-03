@@ -2,6 +2,7 @@ package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
+import jpabook.jpashop.dto.BookForm;
 import jpabook.jpashop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,10 @@ public class ItemService {
     }
 
     @Transactional
-    public Item updateItem(Long itemId, Book bookParam){
+    public void updateItem(Long itemId, BookForm form){
         Item findItem = itemRepository.findOne(itemId);
-        findItem.setPrice(bookParam.getPrice());
-        findItem.setStockQuantity(bookParam.getStockQuantity());
-        findItem.setName(bookParam.getName());
-
-        return findItem;
+        // change method -> 가독성 더 좋게 개선
+        findItem.changeItem(form.getPrice(), form.getStockQuantity(), form.getName());
     }
 
     public List<Item> findItems(){

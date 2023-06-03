@@ -50,11 +50,11 @@ public class ItemController {
     }
 
     @PostMapping("/{itemId}/edit")
-    public String udpateItem(@PathVariable("itemId") Long itemId, @ModelAttribute("form") BookForm form){
-        Book book = Book.createBooK(form.getName(), form.getPrice(), form.getStockQuantity(), form.getAuthor(), form.getIsbn());
-        itemService.updateItem(itemId, book); // 변경 감지를 통한 update
-
-//        itemService.saveItem(book);
+    public String udpateItem(
+            @PathVariable("itemId") Long itemId,
+            @ModelAttribute("form") BookForm form)
+    {
+        itemService.updateItem(itemId, form); // 변경 감지를 통한 update
         return "redirect:/items";
     }
 }
